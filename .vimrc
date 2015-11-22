@@ -36,15 +36,15 @@ Plugin 'ervandew/supertab'
 " python~~~~~~
 Plugin 'gotcha/vimpdb'
 " Node js
-Plugin 'moll/vim-node'
-Plugin 'mattn/jscomplete-vim'
-Plugin 'myhere/vim-nodejs-complete'
+" Plugin 'moll/vim-node'
+" Plugin 'mattn/jscomplete-vim'
+" Plugin 'myhere/vim-nodejs-complete'
 
 Plugin 'jiangmiao/auto-pairs'
 Plugin 'terryma/vim-multiple-cursors'
 Plugin 'mattn/emmet-vim'
 
-Plugin 'jceb/vim-orgmode'
+" Plugin 'jceb/vim-orgmode'
 
 
 call vundle#end()            " required
