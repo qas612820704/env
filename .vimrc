@@ -63,7 +63,8 @@ filetype plugin indent on    " required
 
 " Color 
 set t_Co=256
-color hybrid
+set background=dark
+colorscheme hybrid
 syntax on 
 
 " jedi
