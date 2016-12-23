@@ -8,6 +8,8 @@ call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
 
 Plugin 'w0ng/vim-hybrid'
+Plugin 'tomasr/molokai'
+
 Plugin 'davidhalter/jedi-vim'
 Plugin 'scrooloose/syntastic'
 Plugin 'scrooloose/nerdtree'
@@ -40,12 +42,13 @@ Plugin 'gotcha/vimpdb'
 " Plugin 'mattn/jscomplete-vim'
 " Plugin 'myhere/vim-nodejs-complete'
 
-Plugin 'jiangmiao/auto-pairs'
+" Plugin 'jiangmiao/auto-pairs'
 Plugin 'terryma/vim-multiple-cursors'
 Plugin 'mattn/emmet-vim'
 
 " Plugin 'jceb/vim-orgmode'
-
+Plugin 'rip-rip/clang_complete'
+Plugin 'rhysd/vim-clang-format'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -65,6 +68,8 @@ filetype plugin indent on    " required
 set t_Co=256
 set background=dark
 colorscheme hybrid
+" color molokai
+let g:rehash256 = 1
 syntax on 
 
 " jedi
@@ -94,83 +99,40 @@ let g:Powerline_symbols = 'fancy'
 
 " airline
 let g:airline#extensions#tabline#enabled = 1
+let g:airline_powerline_fonts = 1
 
 
 " default
 set tabstop=2
+set expandtab
 set shiftwidth=2
 set softtabstop=2
+set hlsearch
+set cursorline
+set colorcolumn=80
+highlight ColorColumn guibg=#202020
+
 set expandtab
 set splitbelow
 set splitright
-nnoremap <S-Left> :tabprevious<CR>
-nnoremap <S-Right> :tabnext<CR>
+set number 
+
+nnoremap <C-j> :tabprevious<CR>
+nnoremap <C-k> :tabnext<CR>
 nnoremap <C-T> :tabedit 
 nnoremap <C-T><C-T> :tabedit<CR>
 " nnoremap <C-W> :tabclose<CR>
 
-" autocmd FileType javascript
-"   \ :setl omnifunc=jscomplete#CompleteJS
-" let g:jscomplete_use = ['dom', 'moz']
-" let g:nodejs_complete_config = {
-" \  'js_compl_fn': 'jscomplete#CompleteJS',
-" \  'max_node_compl_len': 15
-" \}
-set list lcs=tab:\|\
+" set list lcs=tab:\|\
 " let g:indentLine_color_term = 239
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"""""新文件标题
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"新建.c,.h,.sh,.java文件，自动插入文件头 
-autocmd BufNewFile *.cpp,*.[ch],*.sh,*.rb,*.java,*.py exec ":call SetTitle()" 
-" autocmd BufNewFile *.py exec ":call SetTitle()" 
-""定义函数SetTitle，自动插入文件头 
-func SetTitle() 
-	"如果文件类型为.sh文件 
-	if &filetype == 'sh' 
-		call setline(1,"\#!/bin/bash") 
-		call append(line("."), "") 
-    elseif &filetype == 'python'
-        call setline(1,"#!/usr/bin/env python")
-        call append(line("."),"# coding=utf-8")
-	    call append(line(".")+1, "") 
+" let g:user_emmet_leader_key='<tab>'
 
-    elseif &filetype == 'ruby'
-        call setline(1,"#!/usr/bin/env ruby")
-        call append(line("."),"# encoding: utf-8")
-	    call append(line(".")+1, "")
+let g:user_emmet_expandabbr_key = '<tab><tab>'
+" let g:user_emmet_expandabbr_key='<tab>'
+let g:user_emmet_install_global = 0
+autocmd FileType html,css,htmldjango EmmetInstall
 
-"    elseif &filetype == 'mkd'
-"        call setline(1,"<head><meta charset=\"UTF-8\"></head>")
-	else 
-		call setline(1, "/*************************************************************************") 
-		call append(line("."), "	> File Name: ".expand("%")) 
-		call append(line(".")+1, "	> Author: ") 
-		call append(line(".")+2, "	> Mail: ") 
-		call append(line(".")+3, "	> Created Time: ".strftime("%c")) 
-		call append(line(".")+4, " ************************************************************************/") 
-		call append(line(".")+5, "")
-	endif
-	if expand("%:e") == 'cpp'
-		call append(line(".")+6, "#include<iostream>")
-		call append(line(".")+7, "using namespace std;")
-		call append(line(".")+8, "")
-	endif
-	if &filetype == 'c'
-		call append(line(".")+6, "#include<stdio.h>")
-		call append(line(".")+7, "")
-	endif
-	if expand("%:e") == 'h'
-		call append(line(".")+6, "#ifndef _".toupper(expand("%:r"))."_H")
-		call append(line(".")+7, "#define _".toupper(expand("%:r"))."_H")
-		call append(line(".")+8, "#endif")
-	endif
-	if &filetype == 'java'
-		call append(line(".")+6,"public class ".expand("%:r"))
-		call append(line(".")+7,"")
-	endif
-	"新建文件后，自动定位到文件末尾
-endfunc 
-autocmd BufNewFile * normal G
-" let g:user_emmet_leader_key='<C-y>'
+let g:clang_library_path='/usr/lib64/libclang.so.3.9'
+let g:clang_format#auto_format_on_insert_leave = 1
 
+let g:SuperTabDefaultCompletionType = "<c-x><c-o>"
