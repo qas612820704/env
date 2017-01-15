@@ -50,6 +50,10 @@ Plugin 'mattn/emmet-vim'
 Plugin 'rip-rip/clang_complete'
 Plugin 'rhysd/vim-clang-format'
 
+Plugin 'jbgutierrez/vim-babel'
+Plugin 'isruslan/vim-es6'
+Plugin 'mxw/vim-jsx'
+
 call vundle#end()            " required
 filetype plugin indent on    " required
 " To ignore plugin indent changes, instead use:
@@ -133,6 +137,9 @@ let g:user_emmet_install_global = 0
 autocmd FileType html,css,htmldjango EmmetInstall
 
 let g:clang_library_path='/usr/lib64/libclang.so.3.9'
-let g:clang_format#auto_format_on_insert_leave = 1
+" let g:clang_format#auto_format_on_insert_leave = 1
 
 let g:SuperTabDefaultCompletionType = "<c-x><c-o>"
+
+let g:jsx_ext_required = 0
+
