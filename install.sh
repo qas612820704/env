@@ -8,6 +8,7 @@ vim +PluginInstall +qall
 
 ## Zshrc
 
+git clone https://github.com/olivierverdier/zsh-git-prompt.git
 ln ./.zshrc ~
 
 ## Alias file

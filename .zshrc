@@ -22,9 +22,17 @@ PROMPT='%{$fg[green]%}%n%{$reset_color%}%{$fg[white]%}@%{$fg[blue]%}%m %{$fg_no_
 source $HOME/.aliases
 
 # Syntex Highlight
-source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+uname_a=$(uname -a)
+if [[ $uname_a == *"Linux"* ]] ; then
+  source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+elif [[ $uname_a == *"BSD"* ]] ; then
+  source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+fi
 
 # Virtualenv
-export WORKON_HOME=~/Venvs
-source /usr/bin/virtualenvwrapper.sh
-
+export WORKON_HOME=~/.venvs
+if [ -f /usr/bin/virtualenvwrapper.sh ] ; then
+  source /usr/bin/virtualenvwrapper.sh
+elif [ -f /usr/local/bin/virtualenvwrapper.sh ] ; then
+  source /usr/local/bin/virtualenvwrapper.sh
+fi
