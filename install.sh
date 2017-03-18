@@ -8,7 +8,8 @@ vim +PluginInstall +qall
 
 ## Zshrc
 
-git clone https://github.com/olivierverdier/zsh-git-prompt.git
+git clone https://github.com/olivierverdier/zsh-git-prompt.git ~/zsh-git-prompt
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/zsh-syntax-highlighting
 ln ./.zshrc ~
 
 ## Alias file
