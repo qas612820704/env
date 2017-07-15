@@ -15,3 +15,9 @@ ln ./.zshrc ~
 ## Alias file
 
 ln ./.aliases ~
+
+
+## awesome config
+
+mkdir -p ~/.config/awesome/
+ln ./rc.lua ~/.config/awesome/
