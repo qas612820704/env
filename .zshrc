@@ -36,3 +36,6 @@ if [ -f /usr/bin/virtualenvwrapper.sh ] ; then
 elif [ -f /usr/local/bin/virtualenvwrapper.sh ] ; then
   source /usr/local/bin/virtualenvwrapper.sh
 fi
+
+# automatic ls when cd
+chpwd() ls -l
