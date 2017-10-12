@@ -39,3 +39,11 @@ fi
 
 # automatic ls when cd
 chpwd() ls -l
+
+# ELECTRON
+export ELECTRON_TRASH=trash-cli
+
+autoload zkbd
+
+bindkey    "^[[3~"          delete-char
+bindkey    "^[3;5~"         delete-char
