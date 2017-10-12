@@ -21,3 +21,8 @@ ln ./.aliases ~
 
 mkdir -p ~/.config/awesome/
 ln ./rc.lua ~/.config/awesome/
+
+
+## tmux conf
+
+ln ./.tmux.conf ~
