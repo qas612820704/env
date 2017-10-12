@@ -121,6 +121,8 @@ set splitbelow
 set splitright
 set number 
 
+set mouse=a
+
 nnoremap <C-j> :tabprevious<CR>
 nnoremap <C-k> :tabnext<CR>
 nnoremap <C-T> :tabedit 
